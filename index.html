@@ -1,25 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="icons/icon-192.png" type="image/png">
-    <title>Credit Card Optimizer</title>
-    <style>
-        body { font-family: sans-serif; padding: 1rem; line-height: 1.6; }
-        h1 { color: #2c3e50; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Card Optimization</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      padding: 20px;
+      background-color: #2980b9;
+      color: white;
+      font-size: 1.5rem;
+    }
+    .accordion {
+      width: 100%;
+      border-top: 1px solid #ddd;
+    }
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+    }
+    .accordion-header {
+      padding: 15px;
+      background: #ffffff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .accordion-header:hover {
+      background: #f0f0f0;
+    }
+    .accordion-content {
+      display: none;
+      padding: 15px;
+      background: #fefefe;
+      font-size: 0.95rem;
+    }
+    .accordion-content ul {
+      padding-left: 18px;
+    }
+    .accordion-content li {
+      margin-bottom: 8px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Credit Card Optimizer</h1>
-    <p>This is your interactive tool to choose the best card based on your spending category.</p>
-    <p>Categories: Groceries, Dining, Gas, Shopping, Travel, Subscriptions, Tolls, and more.</p>
-    <p>Use this logic to maximize cash back and benefits!</p>
-    <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("service-worker.js");
+
+  <h1>Credit Card Optimization</h1>
+
+  <div class="accordion">
+
+    <div class="accordion-item">
+      <div class="accordion-header">Groceries</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Use <strong>Amex Blue Cash Preferred</strong> for 6% cash back (up to $6,000/year).</li>
+          <li>Then switch to <strong>SavorOne</strong> for 3% cash back.</li>
+          <li>Use <strong>Amazon Prime Visa</strong> at <strong>Whole Foods</strong> for 5% back.</li>
+          <li><em>Do not use Blue Cash Preferred or SavorOne at Walmart, Target, Costco, or Sam's.</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Dining</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Use <strong>SavorOne</strong> for 3% cash back.</li>
+          <li>Backup: <strong>Amazon Prime Visa</strong> or <strong>USAA Signature Visa</strong> for 2% back.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Gas</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Use <strong>Blue Cash Preferred</strong> for 3% at eligible gas stations.</li>
+          <li><em>Avoid gas stations co-located with superstores or supermarkets.</em></li>
+          <li>Backup: <strong>Amazon Prime Visa</strong> or <strong>USAA Visa</strong> for 2% back.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Streaming</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Use <strong>Blue Cash Preferred</strong> for Apple TV+ and Spotify (6% cash back).</li>
+          <li>Use <strong>Amex Platinum</strong> for Hulu/Disney/ESPN bundle to get $240/year credit.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Amazon Shopping</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Use <strong>Amazon Prime Visa</strong> for all Amazon.com purchases (5% back).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Travel: Flights & Hotels</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Use <strong>Amex Platinum</strong> via Amex Travel for 5X points.</li>
+          <li>Use <strong>SavorOne</strong> via Capital One Travel for 5% cash back.</li>
+          <li>Use <strong>Amex Platinum</strong> for Southwest to get $200 airline credit.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Uber</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Use <strong>Amex Platinum</strong> to get $200/year Uber credit.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Parking & Tolls</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Use <strong>Blue Cash Preferred</strong> for 3% back on parking garages, parking apps, and tolls (HCTRA, CTRMA, NTTA).</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const openItem = document.querySelector('.accordion-content:not([style*="display: none"])');
+        if (openItem && openItem !== header.nextElementSibling) {
+          openItem.style.display = 'none';
         }
-    </script>
+        const content = header.nextElementSibling;
+        content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+      });
+    });
+  </script>
+
 </body>
 </html>
