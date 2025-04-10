@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon-192.png" type="image/png">
+    <title>Credit Card Optimizer</title>
+    <style>
+        body { font-family: sans-serif; padding: 1rem; line-height: 1.6; }
+        h1 { color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <h1>Credit Card Optimizer</h1>
+    <p>This is your interactive tool to choose the best card based on your spending category.</p>
+    <p>Categories: Groceries, Dining, Gas, Shopping, Travel, Subscriptions, Tolls, and more.</p>
+    <p>Use this logic to maximize cash back and benefits!</p>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js");
+        }
+    </script>
+</body>
+</html>
